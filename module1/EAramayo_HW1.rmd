@@ -1,0 +1,107 @@
+---
+title: "DATA 608 - Module 1"
+author: "Esteban Aramayo"
+date: "2022-02-13"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+```{r global-options, include=FALSE}
+knitr::opts_chunk$set(echo=TRUE, warning=FALSE, message=FALSE,
+                      collapse = TRUE,
+                      comment = "",
+                      prompt=TRUE)
+```
+
+```{r}
+library(dplyr)
+library(ggplot2)
+library(kableExtra)
+library(viridis)
+```
+
+
+
+
+**Principles of Data Visualization and Introduction to ggplot2**
+
+I have provided you with data about the 5,000 fastest growing companies in the US, as compiled by Inc. magazine. lets read this in:
+
+```{r}
+
+inc <- read.csv("https://raw.githubusercontent.com/charleyferrari/CUNY_DATA_608/master/module1/Data/inc5000_data.csv", header= TRUE)
+
+```
+
+And lets preview this data:
+
+```{r}
+
+head(inc)
+
+```
+```{r}
+
+summary(inc)
+
+```
+
+Think a bit on what these summaries mean. Use the space below to add some more relevant non-visual exploratory information you think helps you understand this data:
+
+```{r}
+
+# Insert your code here, create more chunks as necessary
+
+```
+
+## Question 1
+
+Create a graph that shows the distribution of companies in the dataset by State (ie how many are in each state). There are a lot of States, so consider which axis you should use. This visualization is ultimately going to be consumed on a 'portrait' oriented screen (ie taller than wide), which should further guide your layout choices.
+
+```{r out.width="100%"}
+
+# Answer Question 1 here
+
+# Calculate the distribution of companies per State and sort it in descending order
+comp_dist <- inc %>%
+  group_by(State) %>%
+  summarise(n = n()) %>%
+  arrange(desc(n))
+
+ggplot(data = comp_dist, aes(x = reorder(State, n), y = n, fill = n)) +
+  geom_col(position = position_dodge(), width = 0.6) +
+  scale_y_continuous(breaks = seq(0,800,100)) +
+  coord_flip() +
+  ggtitle("Disbribution of Fastest Growing Companies in the US by State") +
+  labs(x = "State", y = "Number of Fastest Growing Companies") +
+  theme_minimal() +
+  theme(legend.position = "bottom") +
+  theme(
+    axis.text.y = element_text(size = rel(0.6))
+  ) +
+  scale_fill_viridis_c()   # add color palette that can also be distinguished by colorblind viewers
+
+```
+
+## Question 2
+
+Lets dig in on the state with the 3rd most companies in the data set. Imagine you work for the state and are interested in how many people are employed by companies in different industries. Create a plot that shows the average and/or median employment by industry for companies in this state (only use cases with full data, use R's `complete.cases()` function.) In addition to this, your graph should show how variable the ranges are, and you should deal with outliers.
+
+```{r}
+
+# Answer Question 2 here
+
+```
+
+## Question 3
+
+Now imagine you work for an investor and want to see which industries generate the most revenue per employee. Create a chart that makes this information clear. Once again, the distribution per industry should be shown.
+
+```{r}
+
+# Answer Question 3 here
+
+```
+
+
