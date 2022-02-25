@@ -88,9 +88,36 @@ ggplot(data = comp_dist, aes(x = reorder(State, n), y = n, fill = n)) +
 
 Lets dig in on the state with the 3rd most companies in the data set. Imagine you work for the state and are interested in how many people are employed by companies in different industries. Create a plot that shows the average and/or median employment by industry for companies in this state (only use cases with full data, use R's `complete.cases()` function.) In addition to this, your graph should show how variable the ranges are, and you should deal with outliers.
 
-```{r}
+```{r out.width="100%"}
 
 # Answer Question 2 here
+
+Top_3_States <- inc %>%
+  group_by(State) %>%
+  summarise(n = n()) %>%
+  arrange(desc(n)) %>%
+  top_n(3)
+
+Top_3_States
+```
+
+```{r out.width="100%"}
+Third_top_State <- inc[complete.cases(Top_3_States),] %>%
+  filter(State == "NY") %>%
+  select(State, Industry, Employees)
+
+# Reorder Industry by IQR to show employment variability in descending order
+ggplot(data = Third_top_State,
+       mapping = aes(x = reorder(Industry, Employees, FUN = IQR),    
+                     y = Employees)) +
+  geom_boxplot() +
+  ggtitle("Disbribution of Employment in NY State by Industry") +
+  labs(x = "Industry", y = "Employees") +
+  coord_flip() +
+  stat_summary(fun.y = mean, geom = "point", shape = 20, color="red", fill="red") + # add mean to graph
+  scale_y_continuous(trans = scales::log2_trans()) +  # transform y values to reduce box compression due to extreme outliers
+  theme_minimal() +
+  scale_fill_viridis_c()   # add color palette that can also be distinguished by colorblind viewers
 
 ```
 
