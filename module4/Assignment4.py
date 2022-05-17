@@ -26,7 +26,7 @@ trees_q1.dropna(inplace = True)
 # define dataframe for question 2
 trees_q2 = trees[['health','boroname','steward']]
 trees_q2.dropna(inplace = True)
-print(trees_q2)
+#print(trees_q2)
 
 # trees_q2[['steward','health']] = trees_q2[['steward','health']].apply(lambda x : pd.factorize(x)[0])
 # trees_q2_cor = pd.DataFrame(trees_q2.groupby(['boroname','spc_common']).corr())
@@ -55,7 +55,7 @@ def percentage_plot(df, col, target, species):
 
     temp_df = df.copy(deep=True)
     temp_df = temp_df[temp_df['spc_common'] == species]
-    print(temp_df.head())
+    #print(temp_df.head())
 
     # Creates a temporary dataframe to get the percentages
     #temp_df = df.groupby(col)['health'].value_counts(normalize=True)
@@ -102,6 +102,7 @@ def stewardHealth_plot(df, col, target, borough):
 ###############################################################################################
 
 app = Dash(__name__)
+server = app.server     # needed for deployment to heroku platform
 
 app.layout = html.Div([
     html.H2('Module 4'),
