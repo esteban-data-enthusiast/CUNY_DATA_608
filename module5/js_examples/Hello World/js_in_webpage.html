@@ -1,6 +1,8 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+  <!-- <html> -->
 
-<!--
+  <!--
     
     Note to Students:
 
@@ -33,91 +35,101 @@
         - Congrats: you now have a local HTTP server running. Now, every time you change this file and save it, when you reload the browser you will see your changes!
 -->
 
-<head><title>Intro to JS in a Browser</title></head>
+  <head>
+    <title>Intro to JS in a Browser</title>
+  </head>
 
-<body>
+  <body>
+    <h1>Intro to JS in a Browser</h1>
+    <h2>All of the below is created with Javascript.</h2>
 
-<h1>Intro to JS in a Browser</h1>
-<h2>All of the below is created with Javascript. </h2>
+    <script type="text/javascript">
+      // Here are some examples of things that you might want to do with Javascript
 
-<script type="text/javascript">
+      // writing to a document directly
 
-// Here are some examples of things that you might want to do with Javascript
+      document.write(
+        "<p><b>While you are working in Javascript (or any language), it is really important to be able to debug. Some browsers offer very simple ways to see what is happening on a page.</b></p>"
+      );
+      document.write(
+        "<p>Chrome and Firefox in particular offer good Developer Tools and Javascript console access</p><br>"
+      );
+    </script>
 
-// writing to a document directly
+    <script type="text/javascript">
+      // Find this bug in the console and fix it!
 
-document.write('<p><b>While you are working in Javascript (or any language), it is really important to be able to debug. Some browsers offer very simple ways to see what is happening on a page.</b></p>');
-document.write('<p>Chrome and Firefox in particular offer good Developer Tools and Javascript console access</p><br>');
-</script>
+      document.write("<p>These are really helpful for finding bugs!</p><br>");
+    </script>
 
-<script type="text/javascript">
+    <script type="text/javascript">
+      // Variables and Math:
 
-// Find this bug in the console and fix it!
+      var num1 = "5";
+      var num2 = "5";
+      var answer;
 
-document.write('<p>These are really helpful for finding bugs!</p><br>');
-</script>
+      answer = +num1 + +num2;
 
+      document.write(num1 + " plus " + num2 + "= " + answer);
 
-<script type="text/javascript">
+      document.write(
+        "<p>An example of a random number would be " + Math.random() + "</p>"
+      );
 
-// Variables and Math:
+      var rightNow = new Date();
 
-var num1 = '5';
-var num2 = '5';
-var answer;
+      document.write("<p>Right now it is " + rightNow + "</p>");
+    </script>
 
-answer = +num1 + +num2
+    <script type="text/javascript">
+      document.write(
+        "<br><p>Is a number even or odd, is it divisible by 3?</p>"
+      );
 
-document.write(num1 + ' plus ' + num2 + '= ' + answer );
+      // Basic functions
 
-document.write('<p>An example of a random number would be ' + Math.random() + '</p>');
+      function divis(num, d) {
+        var evenOdd = "odd";
+        if (num % 2 == 0) {
+          evenOdd = "even";
+        }
 
-var rightNow = new Date();
+        var ddiv = false;
+        if (num % d == 0) {
+          ddiv = true;
+        }
 
-document.write('<p>Right now it is ' + rightNow + '<p>');
+        var dtext;
+        if (ddiv == true) {
+          dtext = "is ";
+        } else dtext = "is not ";
 
-</script>
+        var str;
+        str = num + " is " + evenOdd + " and " + dtext + "divisible by " + d;
 
+        return str;
+      }
 
-<script type="text/javascript">
+      function calc() {
+        var t = document.getElementById("target");
+        t.innerHTML = divis(document.getElementById("num").value, 3);
+      }
+    </script>
 
-document.write('<br><p>Is a number even or odd, is it divisible by 3?')
+    <form>
+      <p>
+        <input id="num" type="number" />
+        <input type="button" value="check" onClick="calc();" />
+      </p>
+    </form>
 
-// Basic functions
+    <div id="target"></div>
 
-function divis(num,d){
-    var evenOdd = 'odd';
-    if (num%2 == 0) {evenOdd = 'even';};
+    <script type="text/javascript" src="other_script.js"></script>
 
-    var ddiv = false;
-    if (num%d == 0) {ddiv = true;};
-
-    var dtext; 
-    if (ddiv==true){dtext = 'is '} else (dtext = 'is not ');
-
-    var str;
-    str = num + ' is ' + evenOdd +' and ' + dtext + 'divisible by ' + d;
-    
-    return(str);
-};
-
-function calc(){
-    var t = document.getElementById("target");
-    t.innerHTML = divis(document.getElementById('num').value, 3);
-}
-</script>
-<p>
-<form>
-    <input id="num" type="number" size="4">
-    <input type="button" value="check" onClick="calc();">
-</form>
-</p>
-
-<div id="target"></div>
-
-<script type="text/javascript" src="other_script.js"></script>
-
-<script type="text/javascript"> document.write(myScript());</script>
-
-</body>
+    <script type="text/javascript">
+      document.write(myScript());
+    </script>
+  </body>
 </html>

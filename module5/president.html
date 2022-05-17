@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="assignment5.css" />
+  </head>
+  <body>
+    <!-- This version has way too many modifications, which make existing code in books not work properly -->
+    <!-- <script src="https://d3js.org/d3.v7.min.js"></script> -->
+
+    <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+
+    <div>
+      <h2>Intermediate</h2>
+
+      <div id="question3">
+        <h3>Question 3</h3>
+        <script src="president.js"></script>
+      </div>
+
+      <div id="question4">
+        <h3>Question 4</h3>
+
+        <form action="" id="form4">
+          <fieldset>
+            <legend>
+              Returns president’s height & weight when you type his name in
+            </legend>
+            <br />
+            <label for="NameInput">Enter a president's name:</label>
+            <input type="text" id="NameInput" name="NameInput" /><br /><br />
+            <input
+              type="button"
+              value="Search"
+              id="submitName"
+              onclick="getPresidentData()"
+            /><br /><br />
+          </fieldset>
+        </form>
+        <p>Results</p>
+        <table id="searchResult">
+          <thead>
+            <th>Name</th>
+            <th>Height</th>
+            <th>Weight</th>
+          </thead>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+
+      <!-- <div id="question5">
+        <h3>Question 5</h3>
+
+        <input
+          type="text"
+          id="myInput"
+          onkeyup="myFunction()"
+          placeholder="Search for names.."
+          title="Type in a name"
+        />
+
+        <table id="myTable">
+          <tr class="header">
+            <th style="width: 60%">Name</th>
+            <th style="width: 40%">Country</th>
+          </tr>
+          <tr>
+            <td>Alfreds Futterkiste</td>
+            <td>Germany</td>
+          </tr>
+          <tr>
+            <td>Berglunds snabbkop</td>
+            <td>Sweden</td>
+          </tr>
+          <tr>
+            <td>Island Trading</td>
+            <td>UK</td>
+          </tr>
+          <tr>
+            <td>Koniglich Essen</td>
+            <td>Germany</td>
+          </tr>
+          <tr>
+            <td>Laughing Bacchus Winecellars</td>
+            <td>Canada</td>
+          </tr>
+          <tr>
+            <td>Magazzini Alimentari Riuniti</td>
+            <td>Italy</td>
+          </tr>
+          <tr>
+            <td>North/South</td>
+            <td>UK</td>
+          </tr>
+          <tr>
+            <td>Paris specialites</td>
+            <td>France</td>
+          </tr>
+        </table>
+
+        <script>
+          function myFunction() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("myTable");
+            tr = table.getElementsByTagName("tr");
+            for (i = 0; i < tr.length; i++) {
+              td = tr[i].getElementsByTagName("td")[0];
+              if (td) {
+                txtValue = td.textContent || td.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                  tr[i].style.display = "";
+                } else {
+                  tr[i].style.display = "none";
+                }
+              }
+            }
+          }
+        </script>
+      </div> -->
+    </div>
+  </body>
+</html>
